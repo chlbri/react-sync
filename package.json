@@ -1,6 +1,6 @@
 {
   "name": "@bemedev/react-sync",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Sync better in react",
   "author": {
     "email": "bri_lvi@icloud.com",
@@ -16,6 +16,14 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "module": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js",
+      "import": "./lib/index.js",
+      "require": "./lib/index.cjs",
+      "types": "./lib/index.d.ts"
+    }
+  },
   "maintainers": [
     {
       "email": "bri_lvi@icloud.com",
