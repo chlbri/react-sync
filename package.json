@@ -1,6 +1,6 @@
 {
   "name": "@bemedev/react-sync",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Sync better in react",
   "author": {
     "email": "bri_lvi@icloud.com",
@@ -59,7 +59,7 @@
     "ci:admin": "pnpm run rm && pnpm run config:off && pnpm run lint && pnpm run build && pnpm run test",
     "rollup": "rollup -c",
     "tsup": "tsup",
-    "build": "pnpm rm:lib && pnpm run tsup",
+    "build": "pnpm rm:lib && pnpm run rollup",
     "rm": "rm -rf node_modules pnpm-lock.yaml",
     "rinit": "pnpm run rm && pnpm run config",
     "rinit:off": "pnpm run rm && pnpm run config:off",
