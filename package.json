@@ -89,7 +89,7 @@
     "@vitest/coverage-v8": "^1.5.2",
     "@xstate/immer": "^0.3.3",
     "eslint": "^8.57.0",
-    "glob": "^10.3.15",
+    "glob": "^11.1.0",
     "husky": "^9.0.11",
     "onchange": "^7.1.0",
     "prettier": "^3.2.5",
