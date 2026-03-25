@@ -8,7 +8,7 @@ import type {
   StateFrom,
   Typestate,
 } from 'xstate';
-import {useSync} from '../hook';
+import { useSync } from '../hook';
 import { defaultCompare, defaultSelector, getSnapShot } from './utils';
 
 export default function useSelector<

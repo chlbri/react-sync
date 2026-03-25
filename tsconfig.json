@@ -6,10 +6,7 @@
     "importHelpers": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "lib": [
-      "dom",
-      "esnext"
-    ],
+    "lib": ["dom", "esnext"],
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "noEmit": true,
@@ -22,13 +19,9 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "ESNext",
-    "types": [
-      "vitest/globals"
-    ],
+    "types": ["vitest/globals"],
     "paths": {
-      "#utils": [
-        "./src/utils.ts"
-      ]
+      "#utils": ["./src/utils.ts"]
     }
-  },
+  }
 }

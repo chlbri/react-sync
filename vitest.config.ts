@@ -6,8 +6,7 @@ import tsconfig from './tsconfig.json';
 export default defineConfig({
   plugins: [aliasTs(tsconfig as any), exclude('**/index.ts')],
   test: {
-    environment: 'node',
-
+    environment: 'jsdom',
     coverage: {
       enabled: true,
       extension: 'ts',
