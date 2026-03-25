@@ -8,7 +8,7 @@ import type {
   StateFrom,
   Typestate,
 } from 'xstate';
-import useSync from '../hook';
+import {useSync} from '../hook';
 import { defaultCompare, defaultSelector, getSnapShot } from './utils';
 
 export default function useSelector<
@@ -28,7 +28,7 @@ export default function useSelector<
   ) => T = defaultSelector,
   compare: (a: T, b: T) => boolean = defaultCompare,
 ): T {
-  const initialStateCacheRef = useRef<AnyState>();
+  const initialStateCacheRef = useRef<AnyState | null>(null);
 
   type Listener = (
     emitted: StateFrom<

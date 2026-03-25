@@ -128,8 +128,8 @@ export default function reactInterpret<
   const sender = <T extends TEvents['type']>(type: T) => {
     type E = TEvents extends {
       type: T;
-    } & infer U
-      ? // eslint-disable-next-line @typescript-eslint/ban-types
+    } & (infer U)
+      ? // oxlint-disable-next-line typescript/no-empty-object-type
         U extends {}
         ? Omit<U, 'type'>
         : never

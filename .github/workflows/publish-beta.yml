@@ -1,23 +1,23 @@
-name: Publish
+name: Publish-Beta
 on:
   push:
     branches:
-      - master
-      - main
+      - beta
 
 jobs:
   publish:
-    name: Publish
+    name: Publish-Beta
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4.1.6
 
       - name: Setup node for publication
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
-          node-version: '24'
+          node-version: '20'
+          always-auth: true
           registry-url: 'https://registry.npmjs.org'
           scope: '@bemedev'
 
@@ -25,7 +25,7 @@ jobs:
         uses: pnpm/action-setup@v4
         id: pnpm-install
         with:
-          version: 10
+          version: 9
           run_install: false
 
       - name: Get pnpm store directory
@@ -33,7 +33,7 @@ jobs:
         shell: bash
         run: |
           echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v5
+      - uses: actions/cache@v4
         name: Setup pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
@@ -49,21 +49,19 @@ jobs:
       - name: Build
         run: pnpm run build
 
-      - uses: JS-DevTools/npm-publish@v4
+      - uses: JS-DevTools/npm-publish@v3
         id: publish
         name: Publish
         with:
           token: ${{ secrets.NPM_TOKEN }}
           access: public
-          strategy: upgrade
+          strategy: all
+          tag: beta
 
       - name: Check - updated
         if: ${{ steps.publish.outputs.type }}
-        run:
-          echo "${{ steps.publish.outputs.name }} Version changed from ${{
-          steps.publish.outputs.old-version }} to ${{
-          steps.publish.outputs.version }}"
+        run: echo "Version changed!"
 
       - name: Check - not updated
         if: ${{ ! steps.publish.outputs.type }}
-        run: echo "Remain the same! - ${{ steps.publish.outputs.version }}"
+        run: echo "Remain the same!"

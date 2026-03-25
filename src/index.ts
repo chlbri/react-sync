@@ -1,1 +1,1 @@
-export { default } from './hook';
+export * from './hook';

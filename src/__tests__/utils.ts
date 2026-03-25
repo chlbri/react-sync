@@ -126,7 +126,7 @@ type ReducerSender<TEvents, T extends string> = LengthOf<
 export type SenderReturn<
   TEvents extends EventObject,
   T extends TEvents['type'],
-> = TEvents extends { type: T } & infer U
+> = TEvents extends { type: T } & (infer U)
   ? ReducerSender<U, T> extends 0
     ? []
     : [Omit<Extract<TEvents, { type: T }>, 'type'>]

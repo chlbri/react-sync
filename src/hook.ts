@@ -31,7 +31,7 @@ const objectIs: (x: any, y: any) => boolean =
  * @param isEqual
  * @returns Value synchronized with a selector
  */
-export default function useSync<Snapshot, Selection>(
+export function useSync<Snapshot, Selection>(
   subscribe: (f: () => void) => () => void,
   getSnapshot: () => Snapshot,
   getServerSnapshot: void | null | (() => Snapshot),
@@ -60,6 +60,8 @@ export default function useSync<Snapshot, Selection>(
   } else {
     inst = instRef.current;
   }
+
+  // oxlint-disable-next-line no-unused-expressions
   inst;
   const [getSelection, getServerSelection] = useMemo(() => {
     // Track the memoized state using closure variables that are local to this
